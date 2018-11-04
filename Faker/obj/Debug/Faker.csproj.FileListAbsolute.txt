@@ -1,0 +1,6 @@
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\bin\Debug\Faker.exe.config
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\bin\Debug\Faker.exe
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\bin\Debug\Faker.pdb
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\obj\Debug\Faker.csprojResolveAssemblyReference.cache
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\obj\Debug\Faker.exe
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\Faker\obj\Debug\Faker.pdb
