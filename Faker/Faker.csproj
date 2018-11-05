@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Faker.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="IValueGenerator.cs" />
     <Compile Include="Program.cs" />
