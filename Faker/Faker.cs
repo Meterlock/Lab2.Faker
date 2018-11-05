@@ -49,7 +49,23 @@ namespace Faker
 
         public object CreateByFields(Type type)
         {
-            return null;
+            object result = Activator.CreateInstance(type);
+            FieldInfo[] fields = type.GetFields();
+            PropertyInfo[] properties = type.GetProperties();
+
+            foreach (FieldInfo field in fields)
+            {
+                field.SetValue(result, generator.GenerateValue(field.FieldType));                
+            }
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.CanWrite && property.SetMethod.IsPublic)
+                {
+                    property.SetValue(result, generator.GenerateValue(property.PropertyType));
+                }
+            }
+
+            return result;
         }
 
         public object CreateByConstructor(ConstructorInfo constructor, Type type)
