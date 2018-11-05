@@ -28,7 +28,21 @@ namespace Faker
 
         private ConstructorInfo FindMaxParamConstructor(Type type)
         {
-            return null;
+            ConstructorInfo[] constructors = type.GetConstructors();
+            ConstructorInfo maxParamConstructor = null;
+            int maxCount = 0, paramCount = 0;
+
+            foreach (ConstructorInfo constructor in constructors)
+            {
+                paramCount = constructor.GetParameters().Count<ParameterInfo>();
+                if (paramCount > maxCount)
+                {
+                    maxCount = paramCount;
+                    maxParamConstructor = constructor;
+                }
+            }
+
+            return maxParamConstructor;
         }
 
         public object CreateByFields(Type type)
