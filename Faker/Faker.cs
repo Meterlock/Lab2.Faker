@@ -24,7 +24,7 @@ namespace Faker
             return null;
         }
 
-        public object CreateByConstructor(Type type)
+        public object CreateByConstructor(ConstructorInfo constructor, Type type)
         {
             return null;
         }
@@ -32,7 +32,22 @@ namespace Faker
         public T Create<T>()
         {
             Type type = typeof(T);
-            object result = null;
+            object result = null;            
+            ConstructorInfo maxParamConstructor = FindMaxParamConstructor(type);
+            ConstructorInfo baseConstructor = FindBaseConstructor(type);
+            int publicFieldsCount = type.GetFields().Count<FieldInfo>();
+            int publicPropertiesCount = type.GetProperties().Count<PropertyInfo>();
+            
+            if ((maxParamConstructor == null) || ((baseConstructor != null) &&
+                (maxParamConstructor.GetParameters().Count<ParameterInfo>() < publicFieldsCount + publicPropertiesCount)))
+            {
+                result = CreateByFields(type);
+            }
+            else
+            {
+                result = CreateByConstructor(maxParamConstructor, type);
+            }
+
             return (T)result;
         }
     }
