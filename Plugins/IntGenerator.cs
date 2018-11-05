@@ -13,5 +13,10 @@ namespace Plugins
         {
             return new Random().Next();
         }
+
+        public Type GetValueType()
+        {
+            return typeof(int);
+        }
     }
 }
