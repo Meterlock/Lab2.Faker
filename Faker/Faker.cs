@@ -9,6 +9,8 @@ namespace Faker
 {
     public class Faker
     {
+        Generator generator = new Generator();
+
         private ConstructorInfo FindBaseConstructor(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
@@ -52,7 +54,17 @@ namespace Faker
 
         public object CreateByConstructor(ConstructorInfo constructor, Type type)
         {
-            return null;
+            object[] parametersValues = new object[constructor.GetParameters().Count<ParameterInfo>()];
+            ParameterInfo[] parameters = constructor.GetParameters();
+            object result = null;
+
+            for (int i = 0; i < parametersValues.Length; i++)
+            {
+                parametersValues[i] = generator.GenerateValue(parameters[i].ParameterType);
+            }
+
+            result = constructor.Invoke(parametersValues);
+            return result;
         }
 
         public T Create<T>()
