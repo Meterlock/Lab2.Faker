@@ -11,7 +11,19 @@ namespace Faker
     {
         private ConstructorInfo FindBaseConstructor(Type type)
         {
-            return null;
+            ConstructorInfo[] constructors = type.GetConstructors();
+            ConstructorInfo baseConstructor = null;
+
+            foreach (ConstructorInfo constructor in constructors)
+            {
+                if (constructor.GetParameters().Count<ParameterInfo>() == 0)
+                {
+                    baseConstructor = constructor;
+                    break;
+                }
+            }
+
+            return baseConstructor;
         }
 
         private ConstructorInfo FindMaxParamConstructor(Type type)
