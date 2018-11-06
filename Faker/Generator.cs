@@ -42,6 +42,17 @@ namespace Faker
         public object GenerateValue(Type type)
         {
             object result = null;
+            Func<object> genDelegate = null;
+
+            if (generatorsDict.TryGetValue(type, out genDelegate))
+            {
+                result = genDelegate.Invoke();
+            }
+            else
+            {
+                result = typeof(Faker).GetMethod("Create").MakeGenericMethod(type).Invoke(null, null);
+            }
+
             return result;
         }
     }

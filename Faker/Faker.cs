@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    public class Faker
+    public static class Faker
     {
-        Generator generator = new Generator();
+        static Generator generator = new Generator();
 
-        private ConstructorInfo FindBaseConstructor(Type type)
+        private static ConstructorInfo FindBaseConstructor(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
             ConstructorInfo baseConstructor = null;
@@ -28,7 +28,7 @@ namespace Faker
             return baseConstructor;
         }
 
-        private ConstructorInfo FindMaxParamConstructor(Type type)
+        private static ConstructorInfo FindMaxParamConstructor(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
             ConstructorInfo maxParamConstructor = null;
@@ -47,7 +47,7 @@ namespace Faker
             return maxParamConstructor;
         }
 
-        public object CreateByFields(Type type)
+        public static object CreateByFields(Type type)
         {
             object result = Activator.CreateInstance(type);
             FieldInfo[] fields = type.GetFields();
@@ -68,7 +68,7 @@ namespace Faker
             return result;
         }
 
-        public object CreateByConstructor(ConstructorInfo constructor, Type type)
+        public static object CreateByConstructor(ConstructorInfo constructor, Type type)
         {
             object[] parametersValues = new object[constructor.GetParameters().Count<ParameterInfo>()];
             ParameterInfo[] parameters = constructor.GetParameters();
@@ -83,7 +83,7 @@ namespace Faker
             return result;
         }
 
-        public T Create<T>()
+        public static T Create<T>()
         {
             Type type = typeof(T);
             object result = null;            
