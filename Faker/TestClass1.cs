@@ -10,8 +10,8 @@ namespace Faker
     {
         public TestClass1() { }
 
-        public int val1;
-        public int val2 { get; set; }
+        public long val1;
+        public long val2 { get; set; }
         public TestClass2 val3;
     }
 }
