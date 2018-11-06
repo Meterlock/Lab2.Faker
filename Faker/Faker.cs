@@ -9,7 +9,8 @@ namespace Faker
 {
     public static class Faker
     {
-        static Generator generator = new Generator();
+        private static Generator generator = new Generator();
+        public static List<Type> antiCycleList = new List<Type>();
 
         private static ConstructorInfo FindBaseConstructor(Type type)
         {
@@ -86,6 +87,7 @@ namespace Faker
         public static T Create<T>()
         {
             Type type = typeof(T);
+            antiCycleList.Add(type);
             object result = null;            
             ConstructorInfo maxParamConstructor = FindMaxParamConstructor(type);
             ConstructorInfo baseConstructor = FindBaseConstructor(type);
@@ -100,8 +102,9 @@ namespace Faker
             else
             {
                 result = CreateByConstructor(maxParamConstructor, type);
-            }            
+            }
 
+            antiCycleList.Remove(type);
             return (T)result;
         }
     }

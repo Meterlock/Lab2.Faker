@@ -50,7 +50,8 @@ namespace Faker
             }
             else
             {
-                result = typeof(Faker).GetMethod("Create").MakeGenericMethod(type).Invoke(null, null);
+                if (!Faker.antiCycleList.Contains(type))
+                    result = typeof(Faker).GetMethod("Create").MakeGenericMethod(type).Invoke(null, null);
             }
 
             return result;

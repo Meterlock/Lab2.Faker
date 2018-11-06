@@ -11,5 +11,6 @@ namespace Faker
         public TestClass2() { }
 
         public int val0;
+        public TestClass1 val00;
     }
 }
