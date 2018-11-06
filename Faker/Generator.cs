@@ -17,7 +17,7 @@ namespace Faker
         {
             var dir = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
             dir = dir.Parent.Parent.Parent;
-            asmbl = Assembly.LoadFile(dir.FullName + "\\Plugins\\bin\\Debug\\Plugins.dll");
+            asmbl = Assembly.LoadFile(dir.FullName + "\\Plugins\\obj\\Debug\\Plugins.dll");
 
             generatorsDict = new Dictionary<Type, Func<object>>();
             DictionaryFilling();

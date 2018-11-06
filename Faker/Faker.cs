@@ -100,7 +100,7 @@ namespace Faker
             else
             {
                 result = CreateByConstructor(maxParamConstructor, type);
-            }
+            }            
 
             return (T)result;
         }

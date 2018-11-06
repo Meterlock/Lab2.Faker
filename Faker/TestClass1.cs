@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    class TestClass1
+    public class TestClass1
     {
         public TestClass1() { }
 
         public int val1;
         public int val2 { get; set; }
+        public TestClass2 val3;
     }
 }

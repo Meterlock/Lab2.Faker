@@ -1,13 +1,15 @@
 ﻿using System;
 using Faker;
+using System.Threading;
 
 namespace Plugins
 {
-    class IntGenerator : IValueGenerator
+    public class IntGenerator : IValueGenerator
     {
         public object GenerateValue()
         {
-            return new Random().Next();
+            Thread.Sleep(10);
+            return new Random().Next();            
         }
 
         public Type GetValueType()
