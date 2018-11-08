@@ -10,7 +10,7 @@ namespace Plugins
         {
             Thread.Sleep(10);
             byte[] bytes = new byte[sizeof(char)];
-            new Random().NextBytes(bytes);
+            new Random().NextBytes(bytes);            
             return BitConverter.ToChar(bytes, 0);
         }
 

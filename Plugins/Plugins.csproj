@@ -43,11 +43,13 @@
     <Compile Include="BoolGenerator.cs" />
     <Compile Include="ByteGenerator.cs" />
     <Compile Include="CharGenerator.cs" />
+    <Compile Include="DateTimegenerator.cs" />
     <Compile Include="DoubleGenerator.cs" />
     <Compile Include="FloatGenerator.cs" />
     <Compile Include="IntGenerator.cs" />
     <Compile Include="LongGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Faker\Faker.csproj">
