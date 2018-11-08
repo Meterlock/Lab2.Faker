@@ -44,6 +44,10 @@ namespace Faker
             object result = null;
             Func<object> genDelegate = null;
 
+            if (type.IsGenericType)
+            {
+                result = new ListGenerator(type).GenerateValue();                
+            }
             if (generatorsDict.TryGetValue(type, out genDelegate))
             {
                 result = genDelegate.Invoke();

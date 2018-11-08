@@ -46,6 +46,7 @@
     <Compile Include="Faker.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="IValueGenerator.cs" />
+    <Compile Include="ListGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClass1.cs" />
