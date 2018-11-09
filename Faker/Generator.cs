@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Faker
 {
@@ -46,9 +43,9 @@ namespace Faker
 
             if (type.IsGenericType)
             {
-                result = new ListGenerator(type).GenerateValue();                
+                result = new ListGenerator(type.GenericTypeArguments[0]).GenerateValue();                
             }
-            if (generatorsDict.TryGetValue(type, out genDelegate))
+            else if (generatorsDict.TryGetValue(type, out genDelegate))
             {
                 result = genDelegate.Invoke();
             }

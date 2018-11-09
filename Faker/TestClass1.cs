@@ -12,6 +12,7 @@ namespace Faker
 
         public long val1;
         public long val2 { get; set; }
+        public List<byte> val4;
         public TestClass2 val3;
     }
 }

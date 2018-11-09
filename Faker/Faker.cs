@@ -48,7 +48,7 @@ namespace Faker
             return maxParamConstructor;
         }
 
-        public static object CreateByFields(Type type)
+        private static object CreateByFields(Type type)
         {
             object result = Activator.CreateInstance(type);
             FieldInfo[] fields = type.GetFields();
@@ -69,7 +69,7 @@ namespace Faker
             return result;
         }
 
-        public static object CreateByConstructor(ConstructorInfo constructor, Type type)
+        private static object CreateByConstructor(ConstructorInfo constructor, Type type)
         {
             object[] parametersValues = new object[constructor.GetParameters().Count<ParameterInfo>()];
             ParameterInfo[] parameters = constructor.GetParameters();
@@ -91,11 +91,11 @@ namespace Faker
             object result = null;            
             ConstructorInfo maxParamConstructor = FindMaxParamConstructor(type);
             ConstructorInfo baseConstructor = FindBaseConstructor(type);
-            int publicFieldsCount = type.GetFields().Count<FieldInfo>();
-            int publicPropertiesCount = type.GetProperties().Count<PropertyInfo>();
+            int publicFieldsCount = type.GetFields().Count();
+            int publicPropertiesCount = type.GetProperties().Count();
             
             if ((maxParamConstructor == null) || ((baseConstructor != null) &&
-                (maxParamConstructor.GetParameters().Count<ParameterInfo>() < publicFieldsCount + publicPropertiesCount)))
+                (maxParamConstructor.GetParameters().Count() < publicFieldsCount + publicPropertiesCount)))
             {
                 result = CreateByFields(type);
             }
