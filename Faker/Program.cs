@@ -11,15 +11,12 @@ namespace Faker
         static void Main(string[] args)
         {
             Console.WriteLine("App is running!");
-            
+
             TestClass1 test1 = Faker.Create<TestClass1>();
-            /*Console.WriteLine(test1.val1);
-            Console.WriteLine(test1.val2);
-            Console.WriteLine(test1.val3.val00 == null);
-            foreach(byte elem in test1.val4)
-            {
-                Console.WriteLine(elem);
-            }*/
+            TestClass3 test2 = Faker.Create<TestClass3>();
+            Console.WriteLine(test2.val1);
+            Console.WriteLine(test2.val2);
+            Console.WriteLine(test2.val3);
 
             Console.ReadKey();
         }

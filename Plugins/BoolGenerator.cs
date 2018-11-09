@@ -8,8 +8,9 @@ namespace Plugins
     {
         public object GenerateValue()
         {
-            Thread.Sleep(10);
-            return Convert.ToBoolean(new Random().Next(0, 2));
+            /*Thread.Sleep(10);
+            return Convert.ToBoolean(new Random().Next(0, 2));*/
+            return true;
         }
 
         public Type GetValueType()

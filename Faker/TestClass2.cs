@@ -8,9 +8,6 @@ namespace Faker
 {
     public class TestClass2
     {
-        /*public TestClass2() { }
-
-        public int val0;
-        public TestClass1 val00;*/
+        public TestClass1 val1;                
     }
 }
