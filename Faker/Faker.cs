@@ -79,8 +79,12 @@ namespace Faker
             {
                 parametersValues[i] = generator.GenerateValue(parameters[i].ParameterType);
             }
-
-            result = constructor.Invoke(parametersValues);
+            try
+            {
+                result = constructor.Invoke(parametersValues);
+            }
+            catch (Exception e) { }
+            
             return result;
         }
 
@@ -93,7 +97,9 @@ namespace Faker
             ConstructorInfo baseConstructor = FindBaseConstructor(type);
             int publicFieldsCount = type.GetFields().Count();
             int publicPropertiesCount = type.GetProperties().Count();
-            
+
+            if ((maxParamConstructor == null) && (baseConstructor == null))
+                return (type.IsValueType ? (T)Activator.CreateInstance(type) : (T)result);
             if ((maxParamConstructor == null) || ((baseConstructor != null) &&
                 (maxParamConstructor.GetParameters().Count() < publicFieldsCount + publicPropertiesCount)))
             {

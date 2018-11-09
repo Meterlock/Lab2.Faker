@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faker", "Faker.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins", "..\Plugins\Plugins.csproj", "{82494D2C-9E9B-4E13-97F6-A4A5F118C83E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{5B1FF7DE-C0F4-4195-9C17-C67806728302}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82494D2C-9E9B-4E13-97F6-A4A5F118C83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82494D2C-9E9B-4E13-97F6-A4A5F118C83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82494D2C-9E9B-4E13-97F6-A4A5F118C83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B1FF7DE-C0F4-4195-9C17-C67806728302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1FF7DE-C0F4-4195-9C17-C67806728302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1FF7DE-C0F4-4195-9C17-C67806728302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1FF7DE-C0F4-4195-9C17-C67806728302}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,9 @@
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\UnitTests.dll
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\UnitTests.pdb
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\Faker.exe
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\Faker.pdb
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\obj\Debug\UnitTests.dll
+D:\УНИВЕР\5 семестр\СПП\Lab2.Faker\UnitTests\obj\Debug\UnitTests.pdb

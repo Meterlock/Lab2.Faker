@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Collections;
 
 namespace Faker
 {
@@ -12,7 +13,7 @@ namespace Faker
 
         public Generator()
         {
-            var dir = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+            var dir = new DirectoryInfo(Directory.GetCurrentDirectory());
             dir = dir.Parent.Parent.Parent;
             asmbl = Assembly.LoadFile(dir.FullName + "\\Plugins\\obj\\Debug\\Plugins.dll");
 
@@ -41,7 +42,7 @@ namespace Faker
             object result = null;
             Func<object> genDelegate = null;
 
-            if (type.IsGenericType)
+            if (type.IsGenericType && (type.GetInterface(nameof(IList)) != null))
             {
                 result = new ListGenerator(type.GenericTypeArguments[0]).GenerateValue();                
             }
