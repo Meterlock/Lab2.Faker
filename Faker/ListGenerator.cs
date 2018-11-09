@@ -17,9 +17,9 @@ namespace Faker
             type = _type;
         }
 
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Random random = new Random();
+            //Random random = new Random();
             object list = Activator.CreateInstance(typeof(List<>).MakeGenericType(type));
             int count = random.Next(1, 25);
             for (int i = 0; i < count; i++)

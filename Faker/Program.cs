@@ -12,11 +12,13 @@ namespace Faker
         {
             Console.WriteLine("App is running!");
 
-            TestClass1 test1 = Faker.Create<TestClass1>();
-            TestClass3 test2 = Faker.Create<TestClass3>();
-            Console.WriteLine(test2.val1);
-            Console.WriteLine(test2.val2);
-            Console.WriteLine(test2.val3);
+            TestClass1 test1 = FakerSingleton.getInstance().Create<TestClass1>();
+            TestClass3 test2 = FakerSingleton.getInstance().Create<TestClass3>();
+
+            foreach(byte elem in test1.val10)
+            {
+                Console.WriteLine(elem);
+            }
 
             Console.ReadKey();
         }

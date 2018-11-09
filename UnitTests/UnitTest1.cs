@@ -14,7 +14,7 @@ namespace UnitTests
         [TestInitialize]
         public void SetUp()
         {
-            testable = Faker.Faker.Create<TestClass1>();
+            testable = FakerSingleton.getInstance().Create<TestClass1>();
         }
 
 
@@ -84,14 +84,12 @@ namespace UnitTests
         {
             Assert.IsNull(testable.val11.val1);
         }
-
+        
         [TestMethod]
-        public void TestConstructor()
+        public void TestPrivateConstructor()
         {
-            TestClass3 class3 = Faker.Faker.Create<TestClass3>();
-            Assert.AreNotEqual(0, class3.val1);
-            Assert.IsNotNull(class3.val2);
-            Assert.IsTrue(class3.val3);
+            TestClass3 class3 = FakerSingleton.getInstance().Create<TestClass3>();
+            Assert.IsNull(class3);
         }
     }
 }

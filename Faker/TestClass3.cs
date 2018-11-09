@@ -12,11 +12,6 @@ namespace Faker
         public string val2;
         public bool val3;
 
-        public TestClass3(int _val1, string _val2, bool _val3)
-        {
-            val1 = _val1;
-            val2 = _val2;
-            val3 = _val3;
-        }
+        private TestClass3() { }
     }
 }

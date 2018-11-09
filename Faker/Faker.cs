@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Faker
 {
-    public static class Faker
+    public class Faker
     {
-        private static Generator generator = new Generator();
-        public static List<Type> antiCycleList = new List<Type>();
+        private Generator generator = new Generator();
+        public List<Type> antiCycleList = new List<Type>();
 
-        private static ConstructorInfo FindBaseConstructor(Type type)
+        private ConstructorInfo FindBaseConstructor(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
             ConstructorInfo baseConstructor = null;
@@ -29,7 +29,7 @@ namespace Faker
             return baseConstructor;
         }
 
-        private static ConstructorInfo FindMaxParamConstructor(Type type)
+        private ConstructorInfo FindMaxParamConstructor(Type type)
         {
             ConstructorInfo[] constructors = type.GetConstructors();
             ConstructorInfo maxParamConstructor = null;
@@ -47,8 +47,8 @@ namespace Faker
 
             return maxParamConstructor;
         }
-
-        private static object CreateByFields(Type type)
+ 
+        private object CreateByFields(Type type)
         {
             object result = Activator.CreateInstance(type);
             FieldInfo[] fields = type.GetFields();
@@ -69,7 +69,7 @@ namespace Faker
             return result;
         }
 
-        private static object CreateByConstructor(ConstructorInfo constructor, Type type)
+        private object CreateByConstructor(ConstructorInfo constructor, Type type)
         {
             object[] parametersValues = new object[constructor.GetParameters().Count<ParameterInfo>()];
             ParameterInfo[] parameters = constructor.GetParameters();
@@ -83,14 +83,22 @@ namespace Faker
             {
                 result = constructor.Invoke(parametersValues);
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                //
+            }
             
             return result;
         }
-
-        public static T Create<T>()
+        
+        public T Create<T>()
         {
             Type type = typeof(T);
+            return (T)Create(type);
+        }
+
+        public object Create(Type type)
+        {
             antiCycleList.Add(type);
             object result = null;            
             ConstructorInfo maxParamConstructor = FindMaxParamConstructor(type);
@@ -99,7 +107,7 @@ namespace Faker
             int publicPropertiesCount = type.GetProperties().Count();
 
             if ((maxParamConstructor == null) && (baseConstructor == null))
-                return (type.IsValueType ? (T)Activator.CreateInstance(type) : (T)result);
+                return (type.IsValueType ? Activator.CreateInstance(type) : result);
             if ((maxParamConstructor == null) || ((baseConstructor != null) &&
                 (maxParamConstructor.GetParameters().Count() < publicFieldsCount + publicPropertiesCount)))
             {
@@ -111,7 +119,7 @@ namespace Faker
             }
 
             antiCycleList.Remove(type);
-            return (T)result;
+            return result;
         }
     }
 }

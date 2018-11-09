@@ -6,11 +6,10 @@ namespace Plugins
 {
     public class DoubleGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Thread.Sleep(10);
             byte[] bytes = new byte[sizeof(double)];
-            new Random().NextBytes(bytes);
+            random.NextBytes(bytes);
             return BitConverter.ToDouble(bytes, 0);
         }
 

@@ -6,11 +6,10 @@ namespace Plugins
 {
     public class LongGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Thread.Sleep(10);
             byte[] bytes = new byte[sizeof(long)];
-            new Random().NextBytes(bytes);
+            random.NextBytes(bytes);
             return BitConverter.ToInt64(bytes, 0);
         }
 

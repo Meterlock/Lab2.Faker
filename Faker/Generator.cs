@@ -8,7 +8,7 @@ namespace Faker
 {
     public class Generator
     {
-        private Dictionary<Type, Func<object>> generatorsDict;
+        private Dictionary<Type, Func<Random, object>> generatorsDict;
         private Assembly asmbl;
 
         public Generator()
@@ -17,7 +17,7 @@ namespace Faker
             dir = dir.Parent.Parent.Parent;
             asmbl = Assembly.LoadFile(dir.FullName + "\\Plugins\\obj\\Debug\\Plugins.dll");
 
-            generatorsDict = new Dictionary<Type, Func<object>>();
+            generatorsDict = new Dictionary<Type, Func<Random, object>>();
             DictionaryFilling();
         }
 
@@ -40,20 +40,20 @@ namespace Faker
         public object GenerateValue(Type type)
         {
             object result = null;
-            Func<object> genDelegate = null;
+            Func<Random, object> genDelegate = null;
 
             if (type.IsGenericType && (type.GetInterface(nameof(IList)) != null))
             {
-                result = new ListGenerator(type.GenericTypeArguments[0]).GenerateValue();                
+                result = new ListGenerator(type.GenericTypeArguments[0]).GenerateValue(FakerSingleton.random);                
             }
             else if (generatorsDict.TryGetValue(type, out genDelegate))
             {
-                result = genDelegate.Invoke();
+                result = genDelegate(FakerSingleton.random);
             }
             else
             {
-                if (!Faker.antiCycleList.Contains(type))
-                    result = typeof(Faker).GetMethod("Create").MakeGenericMethod(type).Invoke(null, null);
+                if (!FakerSingleton.getInstance().antiCycleList.Contains(type))
+                    result = FakerSingleton.getInstance().Create(type);
             }
 
             return result;

@@ -6,7 +6,7 @@ namespace Plugins
 {
     class BoolGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
             /*Thread.Sleep(10);
             return Convert.ToBoolean(new Random().Next(0, 2));*/

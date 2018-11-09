@@ -8,7 +8,7 @@ namespace Faker
 {
     public interface IValueGenerator
     {
-        object GenerateValue();
+        object GenerateValue(Random random);
         Type GetValueType();
     }
 }

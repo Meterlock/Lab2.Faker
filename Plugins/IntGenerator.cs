@@ -6,10 +6,9 @@ namespace Plugins
 {
     public class IntGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Thread.Sleep(10);
-            return new Random().Next();            
+            return random.Next();            
         }
 
         public Type GetValueType()

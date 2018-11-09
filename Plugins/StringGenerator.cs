@@ -6,10 +6,9 @@ namespace Plugins
 {
     class StringGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Thread.Sleep(10);
-            Random random = new Random();
+            //Random random = new Random();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             int length = random.Next(1, 30);
             string result = "";

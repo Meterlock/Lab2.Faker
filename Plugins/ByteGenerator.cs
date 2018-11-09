@@ -6,10 +6,9 @@ namespace Plugins
 {
     class ByteGenerator : IValueGenerator
     {
-        public object GenerateValue()
+        public object GenerateValue(Random random)
         {
-            Thread.Sleep(10);
-            return Convert.ToByte(new Random().Next(0, 256));
+            return Convert.ToByte(random.Next(0, 256));
         }
 
         public Type GetValueType()
